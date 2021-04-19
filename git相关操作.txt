@@ -1,3 +1,13 @@
+
+创建SSH Key   1.黑屏终端输入 ssh-keygen -t rsa -C github的注册邮箱
+	      2.记录.ssh目录位置
+	      3.输入GitHub注册密码
+
+		.ssh   id_rsa  私钥
+		       id_rsa.pub  公钥
+登录github   添加公钥
+
+
 创建版本库： 1.在合适的地方，创建一个空目录
 	     2.cd进入该目录
 	     3.使用 git init 命令把这个目录变成Git可以管理
