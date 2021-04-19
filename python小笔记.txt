@@ -1,0 +1,61 @@
+str()和repr()都可以将python中的对象转换为字符串
+
+两者之间的目标不同：
+
+
+str()主要面向用户，其目的是可读性，返回形式为用户友好性和可读性都较强的字符串类型；
+
+repr()面向的是python解释器，或者说开发人员，其目的是准确性，其返回值表示python解释器内部的含义，常作为编程人员debug用途。
+
+repr()的返回值一般可以用eval()函数来还原对象，通常来说有如下等式：
+
+obj = eval(repr(obj))
+
+
+元组与列表区别编辑
+元组与列表相同，也是容器对象，可以存储不同类型的内容。元组与列表有两个不同点。第一个不同点是元组的声明使用小括号，而列表使用方括号，当声明只有一个元素的元组时，需要在这个元素的后面添加英文逗号；第二个不同点是元组声明和赋值后，不能像列表一样添加、删除和修改元素，也就是说元组在程序运行过程中不能被修改。
+用于列表的排序、替换、添加等方法也不适用于元组，适用于元组的主要运算有元组的合并、遍历、求元组的最大值和最小值等操作方法。
+
+字符串判断
+s.isalpha()   所有字符都是字母，为真返回 Ture，否则返回 False。（该方法使用时把中文也当成字母返回True）
+s.isalpha() and not is_Chinese() 判断是否为字母
+
+s.isdigit()   所有字符都是数字，为真返回 Ture，否则返回 False。（只判断数字）
+
+s.isspace()   是否为空格
+
+s.isalnum() 所有字符都是数字或者字母
+
+is_Chinese() 判断是否为中文
+判断是否为中文：
+def is_Chinese(word):
+    for ch in word:
+        if '\u4e00' <= ch <= '\u9fff':
+            return True
+    return False
+
+CSRF跨站请求伪造
+
+
+
+
+python打包成exe
+（使用pyinstaller）
+
+-h，--help	查看该模块的帮助信息
+-F，-onefile	产生单个的可执行文件
+-D，--onedir	产生一个目录（包含多个文件）作为可执行程序
+-a，--ascii	不包含 Unicode 字符集支持
+-d，--debug	产生 debug 版本的可执行文件
+-w，--windowed，--noconsolc	指定程序运行时不显示命令行窗口（仅对 Windows 有效）
+-c，--nowindowed，--console	指定使用命令行窗口运行程序（仅对 Windows 有效）
+-o DIR，--out=DIR	指定 spec 文件的生成目录。如果没有指定，则默认使用当前目录来生成 spec 文件
+-p DIR，--path=DIR	设置 Python 导入模块的路径（和设置 PYTHONPATH 环境变量的作用相似）。也可使用路径分隔符（Windows 使用分号，Linux 使用冒号）来分隔多个路径
+-n NAME，--name=NAME	指定项目（产生的 spec）名字。如果省略该选项，那么第一个脚本的主文件名将作为 spec 的名字
+
+
+
+
+
+
+

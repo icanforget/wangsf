@@ -1,0 +1,6 @@
+F7拼写检查
+CTRL+F快速查找
+CTRL+ENTER 快速换页
+CTRL+= 下标
+CTRL+SHIFT+= 上标
+中文版式，双行合一 上下标字符间插入一个空格

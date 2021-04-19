@@ -1,0 +1,411 @@
+Windows下使用CMD命令进入和退出MySQL数据库
+一、进入
+
+1.在CMD命令窗口敲入命令 mysql -hlocalhost -uroot -p
+
+后按回车（注意这里的"-h"、"-u"、"-p"不能省略） 进入mysql数据库，其中"-h"表示服务器名，localhost表示本地；"-u"为数据库用户名，root是MySQL默认用户名；"-p"为密码，如果设置了密码，可直接在-p后链接输入，如：-p888888，用户没有设置密码，显示Enter password时，直接回车即可。
+
+2.如果您的MySQL没有安装在C盘下，先使用DOS命令进入MySQL的安装目录下的bin目录中。方法如下：输入G:进入G盘），在输入cd G:\phpstudy\mysql\bin 进入到MySQL的bin目录下，才可以输入 mysql -hlocalhost -uroot -p   （其中-hlocalhost是可以省略的）然后按回车键。也可以通过配置环境变量，即将mysql的安装目录地址复制到path，用英文分号分割path先前的内容。配置完之后，即可直接在cmd中输入“mysql -uroot -p123456”，root是mysql用户名，123456是密码，可以看到可以直接打开，如下图所示
+
+二、退出
+
+mysql退出三种方法：
+mysql > exit;
+mysql > quit;
+mysql > \q;
+
+MYSQL常用命令：
+用户权限管理
+ 用户信息表：mysql数据库的下, user表中 --创建用户 create user 用户名[@主机地址] identified by '密码';  
+例如:
+
+create user 'user_one'@'localhost' identified by '1234';--创建一个只能本机访问的用户 
+
+create user 'user_two'@'192.168.1.204.%' identified by '1234';--创建一个可以局域网访问的用户
+
+create user 'user_three' identified by '1234';--创建一个可全网访问的用户 
+
+select host,user,password from user;--查看user表,host用户名和密码
+
+--重命名用户 rename user 老用户名[@老主机地址] to 新用户名[@新主机地址];
+ 
+例如:  
+RENAME USER 'ceshi'@'172.16.1.1' TO 'ceshi1'@'172.16.1.11' -- 设置密码
+
+set password = password('修改密码'); -- 为当前用户设置密码
+
+set password for 用户名 = password('修改密码'); -- 为指定用户设置密码
+
+ 例如:
+set password for 'user_three' = password('123456789'); -- 指定'user_three'用户设置密码
+
+-- 删除用户 drop user 用户名[@主机地址];
+ 例如:
+drop user 'user_two'@'192.168.1.204.%';  --分配权限给用户
+
+ grant 权限列表 on *|库名 . *|表名  to 用户名[@主机地址] [identified by "用户密码"] [with grant option];   
+语法解析: 权限列表: all[privileges]: 表示所有权限; delete:允许使用delete; select:允许使用select; update:允许使用update; insert:允许使用insert 等...  *.* :表示所有库的所有表 库名.表名 :表示某库下面的某表
+
+ 例如: 
+grant update,insert on *.* to user_one@'localhost' identified by "1234" with grant option;
+
+#授权root@10.0.0.51用户所有权限（非炒鸡管理员） 
+mysql> grant all on *.* to root@'10.0.0.51' identified by 'oldboy123'; 
+
+#怎么去授权一个超级管理员呢 mysql> grant all on *.* to root@'10.0.0.51' identified by 'oldboy123' with grant option;
+
+ #其他参数（扩展）
+
+ max_queries_per_hour：一个用户每小时可发出的查询数量
+
+ max_updates_per_hour：一个用户每小时可发出的更新数量 
+
+max_connetions_per_hour：一个用户每小时可连接到服务器的次数 max_user_connetions：允许同时连接数量
+
+--刷新权限 flush privileges;         
+--查看权限 show grants for 用户名[@主机地址];   
+
+show grants for'user_one'@'localhost';  
+
+--查看当前用户权限 show grants;  
+
+--撤消权限
+
+revoke 权限列表 on*|库名 . *|表名 from 用户名[@主机地址]; 
+
+revokeallprivileges, grantoptionfrom 用户名[@主机地址];-- 撤销所有权限
+
+ 例如:
+revoke update on *.* from 'user_one'@'localhost';
+
+==================================================================
+数据库操作   
+关键字：create
+创建数据库(增)create database 数据库名 [数据库选项];
+
+ 
+例如: create database test default charset utf8 collate utf8_bin;
+==================================================================    
+/*数据库选项:字符集和校对规则*/ 
+
+字符集:一般默认utf8; 
+
+校对规则常见:
+
+ ⑴ci结尾的:不分区大小写 
+
+⑵cs结尾的:区分大小写 
+
+⑶bin结尾的：二进制编码进行比较 
+
+================================================================== 
+
+/*关键字:show 查看当前有哪些数据库(查)*/
+
+ show databases;
+
+ 
+
+ ================================================================== 
+
+/*查看数据库的创建语句*/ 
+
+show create database 数据库名;
+
+ ================================================================== 
+
+/*关键字:alter 修改数据库的选项信息(改)*/
+
+alterdatabase 数据库名 [新的数据库选项]; 
+
+例如:    
+alter database test default charset gbk;
+
+ ================================================================== 
+
+/*关键字:drop  删除数据库(删)*/
+
+dropdatabase 数据库名;
+
+ ================================================================== 
+
+/*关键字:use 进入指定的数据库*/
+
+use 数据库名;
+
+表的操作
+/*关键字:show 查询当前数据库下有哪些数据表*/      
+ show tables;
+
+ ================================================================== 
+
+/*关键字:like 模糊查询*/
+
+ 通配符：_可以代表任意的单个字符，%可以代表任意的字符 show tables like'模糊查询表名%'; 
+
+ ================================================================== 
+
+/*查看表的创建语句*/ 
+
+show createtable 表名; 
+
+================================================================== 
+
+/*查看表的结构*/
+
+desc 表名; 
+
+================================================================== 
+
+/*关键字:drop  删除数据表(删)*/
+
+Drop table[if exists] 表名
+
+ 例如:      
+Drop table if exists test; 
+
+ 
+
+================================================================== 
+
+/*关键字:alter 修改表名(改)*/
+
+alter table 旧表名 rename to 新表名;
+
+例如: ALTER TABLE ceshi RENAME TO jobs;
+修改列定义
+ /*关键字:add 增加一列*/  
+alter table 表名 add 新列名 字段类型 [字段选项];
+
+ 例如: 
+alter table test add name char(10) not null default '' comment '名字';
+
+==================================================================
+/*关键字:drop 删除一列*/  
+alter table 表名 drop 字段名; 
+
+例如:
+
+ alter table test drop content;
+
+==================================================================
+/*关键字:modify 修改字段类型*/  
+alter table 表名 modify 字段名 新的字段类型 [新的字段选项];
+
+ 例如: 
+alter table test modify name varchar(100) not null default 'admin' comment '修改后名字';
+
+==================================================================
+/*关键字:first 修改字段排序,把某个字段放在最前面*/  
+alter table 表名 modify 字段名 字段类型 [字段选项] first;
+
+ 例如: 
+alter table test modify name varchar(100) not null default 'admin' comment '最前面' first;
+
+==================================================================
+/*关键字:after 修改字段排序,字段名1放在字段名2的后面*/  
+alter table 表名 modify 字段名1 字段类型 [字段选项] after 字段名2;
+
+ 例如: 
+alter table test modify name varchar(100) not null default 'admin' comment 'time字段后面' after time;
+
+==================================================================
+/*关键字:change 重命名字段*/  
+Alter table 表名 change 原字段名 新字段名 新的字段类型 [新的字段选项];
+
+ 例如: 
+alter table test change name username varchar(50) not null default '' comment '用户名字';
+
+==================================================================
+查询记录
+/*select*/ select [select选项] *|字段列表 [as 字段别名] from 表名 [where子句][group by子句][having子句][order by子句][limit子句]; 
+all: 默认值,保留所有的查询结果. 
+distinct: 去重,去掉重复的查询结果.
+
+ 例如:
+create table user(   id int(10) unsigned not null comment 'id',   name char(20) not null default '' comment '名字',   home varchar(50) not null default '' comment '家庭地址' )engine=InnoDB default charset=utf8 comment='用户表'; insert into user values(1,'admin_a','gz'),(2,'admin_b','sh'),(3,'admin_c','bj'),(4,'admin_d','sz');
+
+--where子句 (条件查询)    
+--从from获得的数据源中进行查询--整型: 1表示真(返回查询记录);0表示假(不返回记录)
+
+--表达式由运算符和运算数组成.
+
+--运算数: 变量(字段)、值、函数返回值
+
+--比较运算符(常用示例)            
+   <, >, <=, >=, =, !=或<>, ISNULL  
+
+between and | not between and --例如: between A and B; 相当于区间[A,B].    
+
+in | not in --例如:in表示某个值出现; not in表示没出现在一个集合之中.isnull|isnotnull--空值查询
+
+like--通配符;  _  :代表任意的单个字符;  % :代表任意的字符
+
+--逻辑运算符     
+&&(AND), ||(OR), ！(NOT), XOR异或
+
+--order by子句  (排序)  
+--order by 字段1[asc|desc],字段n[asc|desc]
+
+--排序: asc 升序(默认)，desc 降序
+
+--limit 子句  (限制查询结果数量) 
+--limit  offset,length   
+
+语法解析: 
+
+offset是指偏移量,默认为0;
+
+ length是指需要显示的记录数.
+
+==================================================================
+insert
+ insert into 表名(字段列表，字段列表) values(值列表，值列表); int insert into 表名1_插入 select (字段列表) from 表名2_复制; 
+例如:
+create table copy(   id int(10) unsigned not null comment 'id',   name char(20) not null default '' comment '名字' )engine=InnoDB default charset=utf8 comment='复制表'; insert into copy values(1,'admin_a'),(2,'admin_b'),(3,'admin_c'); 
+
+create table append(   id int(10) unsigned not null comment 'id',   name char(20) not null default '' comment '名字' )engine=InnoDB default charset=utf8 comment='插入表'; insert into append select * from copy; 
+==================================================================
+--关键字 as:可以为每个列使用别名. 适用于简化列标识,避免多个列标识符重复. 也可省略as. 
+==================================================================
+/*update*/ 语法可以用新值更新原有表行中的各列，SET子句指示要修改哪些列和要给予哪些值。   
+update 表名 set 字段1=值1,字段n=值n [where条件][order by 字段名 asc|desc][limit];
+
+注意：
+1）如果没有WHERE子句，则更新所有的行。
+2）如果指定了ORDER BY子句，则按照被指定的顺序对行进行更新。
+3）LIMIT子句用于给定一个限值，限制可以被更新的行的数目。
+4）多表更新时ORDER BY和LIMIT不能被使用；
+例如:
+UPDATE employees SET manager_id=290 WHERE manager_id=280 LIMIT 2;
+=================================================================
+limit语法
+select 列名 from 表名 limit m,n
+select * from table limit [m],n;
+其中，m—— [m]为可选，如果填写表示skip步长，即跳过m条,m默认为0。
+　　n——显示条数。指从第m+1条记录开始，取n条记录。
+例如:
+select * from stu limit 2,4;
+即：取stu表中第3至第6条，共4条记录。
+==================================================================
+/*delete*/ delete from 表名 [where条件] [order by 字段名 asc|desc] [limit];
+==================================================================
+/*联合查询 关键字:union*/      
+--联合查询:就是将多个查询结果进行纵向上的拼接. (select语句2的查询结果放在select语句1查询结果的后面) 
+
+--语法:  
+
+ select语句1   union[all | distinct]select 语句2   union[all | distinct]select 语句n
+
+例如:查询A班级最高成绩和B班级最低成绩?  (select name, class,score from student where class='A' order by score desc limit 1) union (select name, class,score from student where class='B' order by score limit 1);
+==================================================================
+/*连接查询*/     
+将多个表的字段进行连接,可以指定连接条件. 
+
+--交叉连接 cross join
+
+select*|字段列表 from 表名1 crossjoin 表名2; 
+
+ 一张表的一条记录去连接另一张表中的所有记录,并且保存所有的记录包含两个表的所有的字段. 
+
+结果上看,就是对两张表做笛卡尔积,有n1*n2条记录.
+
+例如:select * from student cross join score;
+==================================================================
+--内连接 inner join   
+select*|字段列表 from 左表 [inner]join 右表 on 左表.字段 = 右表.字段 [五子句]; 
+
+ 数据在左表中存在,同时在右表中又有对应的匹配的结果才会被保存. 如果没有匹配上,数据没有意义不会保存.
+
+ 通常就是两张表中存在相同的某个字段.(项目中通常是关联主键ID) using() 用法连接两表
+
+ 例如:create table teacher(   id int(10) unsigned not null auto_increment comment 'id',   name char(10) not null default '' comment '名字',   class varchar(20) not null default '' comment '班级',   primary key (id) )engine=InnoDB default charset=utf8 comment='教师班级表'; insert into teacher(name,class) values('niuPai','A'),('feng','B');
+==================================================================
+--外连接外 outer join 如果数据不存在,也会出现在连接结果中.     
+
+
+-- 左外连接 left joinselect*|字段列表 from 左表 left[outer]join 右表 on 左表.字段 = 右表.字段 [五子句];  
+
+ 如果数据不存在,左表记录会出现,而右表为null填充
+
+ 例如:select student.*, teacher.class as t_class, teacher.name as t_name from student left join teacher on student.class = teacher.class;
+==================================================================
+ - 右外连接 right join    
+select*|字段列表 from 右表 right[outer]join 左表 on 右表.字段 = 左表.字段 [五子句];   
+
+如果数据不存在,右表记录会出现,而左表为null填充
+
+==================================================================
+--自然连接 natural join 自动判断连接条件完成连接.              
+--自然内连接 natural inner joinselect*|字段列表 from 左表 natural [inner]join 右表;   自然内连接其实就是内连接,这里的匹配条件是由系统自动指定.    
+
+--自然外连接 natural outer join   自然外连接分为自然左外连接和自然右外连接.匹配条件也是由系统自动指定.    
+
+--自然左外连接 natural left joinselect*|字段列表 from 左表 natural left[outer]join 右表;      
+
+--自然右外连接 natural right joinselect*|字段列表 from 右表 natural right[outer]join 左表;
+
+==================================================================
+子查询
+一行: 返回一行的子查询,也加行子查询.  
+select*|字段列表 from 表名 where（字段1,字段n）=（行子查询结果）
+
+例如:     
+select*from student where score=(selectmin(score) asminfrom student);--查询班级最低成绩学生的记录
+
+多行多列: 返回多行多列的子查询,也叫表子查询.
+例如:
+select * from student where class in ('B','C') order by score;--查询B班和C班,排序score字段升序
+
+=================================================================
+===============================================================
+【补充】ifnull函数
+功能：判断某字段或表达式是否为null，如果为null 返回指定的值，否则返回原本的值
+select ifnull(被判断的列名,如果为null被返回的值) from 表名;
+IFNULL(expr1,expr2)用法：
+      假如expr1不为NULL，则 IFNULL() 的返回值为expr1; 否则其返回值为 expr2。IFNULL()的返回值是数字或是字符串，具体情况取决于其所使用的语境。
+select ifnull(commission_pct,0) from employees;
+【补充】is null函数
+功能：判断某字段或表达式是否为null，如果是，则返回1，否则返回0
+select 被判断的列 is null from 表名;
+如expr 为null，那么isnull() 的返回值为 1，否则返回值为 0。 
+SELECT commission_pct IS NULL  FROM employees;
+IS NULL: 当列的值是 NULL,此运算符返回 true。
+IS NOT NULL: 如果该值不为NULL，则此表达式返回true(也就是1)。 否则返回false(也就是0)。 
+NULLIF(expr1,expr2)用法：
+      如果expr1 = expr2 成立，那么返回值为NULL，否则返回值为expr1。这和CASE WHEN expr1 = expr2 THEN NULL ELSE expr1 END相同。 
+#一、字符函数
+#1.length 获取length指定参数值的字节个数
+SELECT LENGTH (列名) FROM 表名;---查询某列的子节数
+SELECT LENGTH (`last_name`) FROM `employees`;
+SELECT LENGTH('john');
+SELECT LENGTH('张三丰hahaha');
+SHOW VARIABLES LIKE '%char%'
+#2.concat 拼接字符串----拼定括号里面指定的字符
+SELECT CONCAT (`列名1`,`列名2`) FROM `表名`;
+SELECT CONCAT(last_name,'_',first_name) 姓名 FROM employees;
+#3.upper---变成大写-----被括起来的字符将变成大写
+     lower---变成小写 -----被括起来的字符将变成小写
+==================================================================
+1.仅仅复制表的结构
+CREATE TABLE 新表名 LIKE 被复制表名;
+CREATE TABLE copy LIKE author;
+#2.复制表的结构+数据
+CREATE TABLE 新表名  SELECT * FROM 被复制表名;
+例如:
+CREATE TABLE xiaowei_cp SELECT * FROM xiaowei;
+#只复制部分数据
+CREATE TABLE 新表名  SELECT * FROM 被复制表名 WHERE 筛选条件;
+例如:
+CREATE TABLE employees_cp 
+SELECT 
+  * 
+FROM
+  employees 
+WHERE salary > 12000 
+ORDER BY salary ASC ;
+#仅仅复制某些字段
+CREATE TABLE copy4 
+SELECT id,au_name
+FROM author
+WHERE 0;

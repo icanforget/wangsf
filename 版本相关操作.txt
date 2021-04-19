@@ -1,0 +1,18 @@
+在windows下如何查看Python的包和模块
+一：查看所有的包和模块
+
+在windows的cmd界面下查看
+
+方法一：
+
+python -m pydoc modules
+
+运行python后
+
+方法二
+
+help('modules')
+
+二：查看pip模块下安装的包
+
+pip list
