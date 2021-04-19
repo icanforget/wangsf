@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta name="description" content="Django 千锋培训读书笔记 https://www.bilibili.com/video/av17879644/?p=1 切换到创建项目的目录 cd C:\Users\admin\Desktop\" />
+    <meta property="og:description" content="Django 千锋培训读书笔记 https://www.bilibili.com/video/av17879644/?p=1 切换到创建项目的目录 cd C:\Users\admin\Desktop\" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Django 千锋培训的学习笔记（1） - 大蛇Python - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=Ey2dEx6TCJEMq7i5rGGloHkehiHv58PKGLPsLJ6UZME" />
+    <link id="MainCss" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001.min.css?v=9x2ZP2K8SSBJowZA6xv0D5FvOmlvd5g21u0NBEAEwfQ" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001-mobile.min.css?v=hUZBXyvgRW1p4oe8x8nCxMMFQEUKHB46jHdp-1ACwJM" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/fengbo1113/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/fengbo1113/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/fengbo1113/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 390418;
+        var currentBlogApp = 'fengbo1113';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'AnotherEon001';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2018-03-12 03:40';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=PjiBvg1YcXX76a9_P7Fm2d90D0nqx4dvpdaDNs1tl_Q"></script>
+    
+    
+    
+</head>
+<body class="has-navbar has-bannerbar">
+    <a name="top"></a>
+        <div id="bannerbar" class="bannerbar-mobile formobile">
+            <a href="https://developer.aliyun.com/learning/21study01?utm_content=g_1000236191" target="_blank" onclick="ga('send', 'event', 'Link', 'click', 'aliyun-mobile-bannerbar')">
+                <img src="https://img2020.cnblogs.com/blog/35695/202102/35695-20210201124157344-514743462.jpg" alt="" />
+            </a>
+        </div>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=oS4PkibyMjZ9rGD5XAcLt99uW_s76Javy2up4dbnZNY" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" onclick="logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <div id="wrapper">
+<div id="header">
+
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/fengbo1113/">阿倫·豐</a>
+</h1>
+<div id="subtitle"></div>
+</div>
+<div id="sub"><div id="blog_stats_place_holder"><script>loadBlogStats();</script></div></div>
+
+
+
+
+</div>
+<div id="main_container">
+<div id="main_content">
+<div id="content">
+	<div id="post_detail">
+    <div class="post">
+        <h2>
+            
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/fengbo1113/p/8547302.html">
+    <span>Django 千锋培训的学习笔记（1）</span>
+    
+
+
+</a>
+
+        </h2>
+        <div class="postbody">
+            
+<div id="cnblogs_post_body" class="blogpost-body">
+    <div class="cnblogs_code">
+<pre><span style="color: rgba(0, 0, 0, 1)">Django 千锋培训读书笔记
+https:</span>//www.bilibili.com/video/av17879644/?p=1<span style="color: rgba(0, 0, 0, 1)">
+
+
+
+
+
+切换到创建项目的目录  cd C:\Users\admin\Desktop\DjangoProject
+创建名为project的项目命令  django</span>-<span style="color: rgba(0, 0, 0, 1)">admin startproject project
+            注：所有路径不要有中文
+            切换到目录cd C:\Users\admin\Desktop\DjangoProject\project
+目录层级说明：manage.py  一个命令行工具，可以让我们用多种方式对Django项目进行交互
+             </span><span style="color: rgba(128, 0, 128, 1)">__init__</span><span style="color: rgba(0, 0, 0, 1)">.py 一个空文件，它告诉Python这个目录应该被看做一个包
+             settings.py 项目的配置文件（主要处理文件）
+             urls.py     项目的url声明 （主要处理文件）
+             wsgi.py     项目与WSGI兼容的Web服务器入口
+配置数据库   Django默认使用SQLite数据库
+            在settings.py文件中通过DATABASES选项进行数据库配置
+配置MySQL    Python3.x中安装的是PyMySQL
+            在__init__.py文件中写入两行代码import pymysql
+                                        pymysql.install_as_MySQLdb()
+    以数据库sunck为例进行示范：对settings.py中的DATABASES进行设置
+            DATABASES </span>=<span style="color: rgba(0, 0, 0, 1)"> {
+                </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">default</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">: {
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">ENGINE</span><span style="color: rgba(128, 0, 0, 1)">'</span>: <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.db.backends.mysql</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">NAME</span><span style="color: rgba(128, 0, 0, 1)">'</span>: <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">sunck</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">USER</span><span style="color: rgba(128, 0, 0, 1)">'</span>: <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">root</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">PASSWORD</span><span style="color: rgba(128, 0, 0, 1)">'</span>: <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">admin123</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">HOST</span><span style="color: rgba(128, 0, 0, 1)">'</span>: <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">localhost</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">PORT</span><span style="color: rgba(128, 0, 0, 1)">'</span>: <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">3306</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+                }
+            }
+创建应用</span>--<span style="color: rgba(0, 0, 0, 1)">在一个项目中可以创建多个应用，每个应用进行一种业务处理
+        打开CMD,进入project(目录名)的目录下，输入命令创建名为myApp的app:
+            python manage.py startapp myAPP
+myAPP目录说明
+    admin.py    进行站点配置
+    models.py   创建模型
+    views.py    创建视图
+激活应用  在settings.py文件中，将myApp应用加入到INSTALLED_APPS选项中
+    INSTALLED_APPS </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+        </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.admin</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+        </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.auth</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+        </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.contenttypes</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+        </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.sessions</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+        </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.messages</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+        </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.staticfiles</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+        </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+    ]
+定义模型 概述：有一个数据表就对应有一个模型
+        在models.py文件中定义模型
+            引入：</span><span style="color: rgba(0, 0, 255, 1)">from</span> django.db <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> models
+            模型类要继承models.Model类
+            示例：
+                </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> Grades(models.Model):
+                    gname </span>= models.CharField(max_length=20<span style="color: rgba(0, 0, 0, 1)">)
+                    gdate </span>=<span style="color: rgba(0, 0, 0, 1)"> models.DateTimeField()
+                    ggirlnum </span>=<span style="color: rgba(0, 0, 0, 1)"> models.IntegerField()
+                    gboynum </span>=<span style="color: rgba(0, 0, 0, 1)"> models.IntegerField()
+                    isDelete </span>= models.BooleanField(default=<span style="color: rgba(0, 0, 0, 1)">False)
+
+                </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> Students(models.Model):
+                    sname </span>= models.CharField(max_length=20<span style="color: rgba(0, 0, 0, 1)">)
+                    sgender </span>= models.BooleanField(default=<span style="color: rgba(0, 0, 0, 1)">True)
+                    sage </span>=<span style="color: rgba(0, 0, 0, 1)"> models.IntegerField()
+                    scontend </span>= models.CharField(max_length=20<span style="color: rgba(0, 0, 0, 1)">)
+                    isDelete </span>= models.BooleanField(default=<span style="color: rgba(0, 0, 0, 1)">False)
+                    sgrade </span>= models.ForeignKey(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Grades</span><span style="color: rgba(128, 0, 0, 1)">"</span>, on_delete=<span style="color: rgba(0, 0, 0, 1)">models.CASCADE,)
+            说明：
+                不需要定义主键，在生成时自动添加，并且值为自动增加
+在数据库中生成数据表
+    生成迁移文件
+        执行 python manage.py makemigrations    在migrations目录下生成一个迁移文件，此时数据库中还没有生成数据表
+    执行迁移
+        执行 python manage.py migrate           相当于执行MySQL语句创建了数据表
+
+测试数据操作
+进入到python shell
+    执行 python manage.py shell
+引入包
+    </span><span style="color: rgba(0, 0, 255, 1)">from</span> myApp.models <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> Grades, Students
+    </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.utils <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> timezone
+    </span><span style="color: rgba(0, 0, 255, 1)">from</span> datetime <span style="color: rgba(0, 0, 255, 1)">import</span> *<span style="color: rgba(0, 0, 0, 1)">
+查询所有数据
+    类名.objects.all()
+    示例： Grades.objects.all()
+添加数据
+    本质：创建一个模型类的对象实例
+    示例：CMD窗口下：
+        grade1 </span>=<span style="color: rgba(0, 0, 0, 1)"> Grades()
+        grade1.gname </span>= <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">python04</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+        grade1.gdate </span>= datetime(year=2017, month=7, day=17<span style="color: rgba(0, 0, 0, 1)">)
+        grade1.ggirlnum </span>= 3<span style="color: rgba(0, 0, 0, 1)">
+        grade1.gboynum </span>= 70<span style="color: rgba(0, 0, 0, 1)">
+        grade1.save()
+查看某个对象
+    类名.objects(pk</span>=<span style="color: rgba(0, 0, 0, 1)">索引号)
+    示例：
+        Grades.objects.get(pk</span>=2<span style="color: rgba(0, 0, 0, 1)">)
+        Grades.objects.all()
+修改某个数据
+    模型对象属性 </span>=<span style="color: rgba(0, 0, 0, 1)"> 新值
+    示例：
+        grade2.gboynum </span>= 60<span style="color: rgba(0, 0, 0, 1)">
+        grade2.save()
+删除数据
+    模型对象.delete()
+    grade2.delete()
+    注意：这是物理删除，数据库中的相应数据被永久删除
+关联对象
+    示例：
+        stu </span>=<span style="color: rgba(0, 0, 0, 1)"> Students()
+        stu.sname </span>= <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Xue Yanmei</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+        stu.sgender </span>=<span style="color: rgba(0, 0, 0, 1)"> False
+        stu.sage </span>= 20<span style="color: rgba(0, 0, 0, 1)">
+        stu.scontend </span>= <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">I am Xue Yanmei</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+        stu.sgrade </span>=<span style="color: rgba(0, 0, 0, 1)"> grade1
+        stu.save()
+    获得关联对象的集合
+        需求：猎取python04班级的所有学生
+             对象名.关联的类名小写_set.all()
+             示例：grade1.students_set.all()
+        需求:创建曾志伟，属于python04班级
+            示例：
+                stu3 </span>= grade1.students_set.create(sname=u<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">Zhen Zhiwei</span><span style="color: rgba(128, 0, 0, 1)">'</span>,sgender=True,scontend=u<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">I am Zhen Zhiwei</span><span style="color: rgba(128, 0, 0, 1)">"</span>,sage=45<span style="color: rgba(0, 0, 0, 1)">)
+            注意：这样创建的数据直接被添加到了数据库当中。
+启动服务器:
+    格式：python manage.py runserver ip:port
+    注意：ip可以不写，不写代表本机ip
+    端口号默认是8000
+    python manage.py runserver
+    说明：
+        这是一个纯python编写的轻量级web服务器，仅仅在开发测试中使用这个
+Admin站点管理：
+    概述：
+        内容发布：负责添加，修改，删除内容的
+        公告访问
+    配置Admin应用：
+        在settings.py文件中的INSTALLED_APPS中添加</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.admin</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+        这条默认是添加好的。
+    创建管理员用户：
+        在项目目录下执行 python manage.py createsuperuser
+        依次输入账号名，邮箱，密码即可完成用户创建
+    登陆：
+        http:</span>//127.0.0.1:8000/admin/<span style="color: rgba(0, 0, 0, 1)">
+    汉化：
+        把project\settings.py
+        中作如下设定：LANGUAGE_CODE </span>= <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">zh-Hans</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">
+                     TIME_ZONE </span>= <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">Asia/Shanghai</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">
+管理数据表：
+    修改 myAPP\admin.py 如下：
+        </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.contrib <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> admin
+        </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> Register your models here.</span>
+        <span style="color: rgba(0, 0, 255, 1)">from</span> .models <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> Grades, Students
+        </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 注册</span>
+<span style="color: rgba(0, 0, 0, 1)">        admin.site.register(Grades)
+        admin.site.register(Students)
+    自定义管理页面：
+        属性说明
+            </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 列表页属性</span>
+            list_display = [] <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 显示字段设置</span>
+            list_filter = [] <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 过滤字段设置</span>
+            search_fields = [] <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 搜索字段设置</span>
+            list_per_page = [] <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 分页设置</span>
+            <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 添加，修改页属性</span>
+            fields = [] <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 规定属性的先后顺序</span>
+            fieldsets = [] <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 给属性分组 注意：fields与fieldsets不能同时使用</span>
+<span style="color: rgba(0, 0, 0, 1)">        属性示例：
+            </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 列表页属性</span>
+            list_display = [<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">pk</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">gname</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">gdate</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">ggirlnum</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">gboynum</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">isDelete</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">]
+            list_filter </span>= [<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">gname</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">]
+            search_fields </span>= [<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">gname</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">]
+            list_per_page </span>= 5
+            <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 添加，修改页属性</span>
+            <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> fields = ['ggirlnum', 'gboynum', 'gname', 'gdate', 'isDelete']</span>
+            fieldsets =<span style="color: rgba(0, 0, 0, 1)"> [
+                (</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">num</span><span style="color: rgba(128, 0, 0, 1)">"</span>,{<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">fields</span><span style="color: rgba(128, 0, 0, 1)">"</span>:[<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">ggirlnum</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">gboynum</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">]}),
+                (</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">base</span><span style="color: rgba(128, 0, 0, 1)">"</span>, {<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">fields</span><span style="color: rgba(128, 0, 0, 1)">"</span>:[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">gname</span><span style="color: rgba(128, 0, 0, 1)">"</span>, <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">gdate</span><span style="color: rgba(128, 0, 0, 1)">"</span>, <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">isDelete</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">]}),
+            ]
+        关联对象：需求：在创建一个班级时可以直接添加几个学生
+            </span><span style="color: rgba(0, 0, 255, 1)">class</span> StudentsInfo(admin.TabularInline):<span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 可选参数admin.StackedInline</span>
+                model =<span style="color: rgba(0, 0, 0, 1)"> Students
+                extra </span>= 2
+            <span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> GradesAdmin(admin.ModelAdmin):
+                inlines </span>=<span style="color: rgba(0, 0, 0, 1)"> [StudentsInfo]
+        布尔值显示问题示例：
+            </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> StudentsAdmin(admin.ModelAdmin):
+                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> gender(self):
+                    </span><span style="color: rgba(0, 0, 255, 1)">if</span><span style="color: rgba(0, 0, 0, 1)"> self.sgender:
+                        </span><span style="color: rgba(0, 0, 255, 1)">return</span> <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">男</span><span style="color: rgba(128, 0, 0, 1)">"</span>
+                    <span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)">:
+                        </span><span style="color: rgba(0, 0, 255, 1)">return</span> <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">女</span><span style="color: rgba(128, 0, 0, 1)">"</span>
+                <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 设置页面列的名称</span>
+                gender.short_description = <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">性别</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+                list_display </span>= [<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">pk</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">sname</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">sage</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, gender,
+                                </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">scontend</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">sgrade</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">isDelete</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">]
+                list_per_page </span>= 10<span style="color: rgba(0, 0, 0, 1)">
+            admin.site.register(Students, StudentsAdmin)
+        执行按钮位置：
+            </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> StudentsAdmin(admin.ModelAdmin):
+                ...snip...
+                actions_on_top </span>=<span style="color: rgba(0, 0, 0, 1)"> False
+                actions_on_bottom </span>=<span style="color: rgba(0, 0, 0, 1)"> True
+            admin.site.register(Students, StudentsAdmin)
+        使用装饰器完成注册：
+            @admin.register(Students)
+                </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> StudentsAdmin(admin.ModelAdmin):
+                    </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> gender(self):
+                    ...snip...
+                    actions_on_top </span>=<span style="color: rgba(0, 0, 0, 1)"> False
+                    actions_on_bottom </span>=<span style="color: rgba(0, 0, 0, 1)"> True
+视图的基本使用
+    概述：
+        在Django中，视图是对web请求进行回应
+        视图就是一个python函数，在views.py文件中定义。
+    定义视图：
+        示例：在myApp\views.py中写入
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.shortcuts <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> render
+            </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> Create your views here.</span>
+            <span style="color: rgba(0, 0, 255, 1)">from</span> django.http <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> HttpResponse
+            </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> index(request):
+                </span><span style="color: rgba(0, 0, 255, 1)">return</span> HttpResponse(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Sunck is a good man</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+    配置url：方法一：path方法:
+        修改project目录下的urls.py文件：
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.contrib <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> admin
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.urls <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> path, include
+            urlpatterns </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+                path(</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">admin/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, admin.site.urls),
+                path(</span><span style="color: rgba(128, 0, 0, 1)">''</span>, include(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp.urls</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)),
+            ]
+        在myApp应用目录下创建urls.py文件：
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.urls <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> path, include
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> . <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> views
+            urlpatterns </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+                path(</span><span style="color: rgba(128, 0, 0, 1)">''</span><span style="color: rgba(0, 0, 0, 1)">,views.index),
+            ]
+    配置url：方法二：url方法:
+        修改project目录下的urls.py文件：
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.contrib <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> admin
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.conf.urls <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> url,include
+            urlpatterns </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+                url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^admin/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, admin.site.urls),
+                url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^</span><span style="color: rgba(128, 0, 0, 1)">'</span>, include(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp.urls</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)),
+            ]
+        在myApp应用目录下创建urls.py文件：
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.conf.urls <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> url
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> . <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> views
+            urlpatterns </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+                url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^$</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.index),
+            ]
+模板的基本使用：
+    概述：模板是HTML页面，可以根据视图中传递过来的数据进行填充
+    创建模板：
+        创建templates目录，在目录下创建对应项目的模板目录（project</span>/templates/<span style="color: rgba(0, 0, 0, 1)">myApp）
+    配置模板路径：
+        修改settings.py文件下的TEMPLATES下的</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">DIRS</span><span style="color: rgba(128, 0, 0, 1)">'</span>为<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">DIRS</span><span style="color: rgba(128, 0, 0, 1)">'</span>: [os.path.join(BASE_DIR, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">templates</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)],
+    定义grades.html与students.html模板：
+        在templates\myApp\目录下创建grades.html与students.html模板文件
+        模板语法：
+            {{输出值，可以是变量，也可以是对象，属性}}
+            {</span>%执行代码段%<span style="color: rgba(0, 0, 0, 1)">}
+    http:</span>//127.0.0.1:8000/<span style="color: rgba(0, 0, 0, 1)">grades
+        写grades.html模板：
+            </span>&lt;!doctype html&gt;
+            &lt;html lang=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">en</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+            &lt;head&gt;
+                &lt;meta charset=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">UTF-8</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                &lt;meta name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">viewport</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+                      content</span>=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                &lt;meta http-equiv=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">X-UA-Compatible</span><span style="color: rgba(128, 0, 0, 1)">"</span> content=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ie=edge</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                &lt;title&gt;班级信息&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;h1&gt;班级信息列表&lt;/h1&gt;
+                &lt;ul&gt;
+                    &lt;!--[python04, python05, python06]--&gt;<span style="color: rgba(0, 0, 0, 1)">
+                    {</span>%<span style="color: rgba(0, 0, 255, 1)">for</span> grade <span style="color: rgba(0, 0, 255, 1)">in</span> grades%<span style="color: rgba(0, 0, 0, 1)">}
+                    </span>&lt;li&gt;
+                        &lt;a href=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">#</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;{{grade.gname}}&lt;/a&gt;
+                    &lt;/li&gt;<span style="color: rgba(0, 0, 0, 1)">
+                    {</span>%endfor%<span style="color: rgba(0, 0, 0, 1)">}
+                </span>&lt;/ul&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;<span style="color: rgba(0, 0, 0, 1)">
+        定义视图：myApp\views.py
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> .models <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> Grades
+            </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> grades(request):
+                </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 去模板里取数据</span>
+                gradesList =<span style="color: rgba(0, 0, 0, 1)"> Grades.objects.all()
+                </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 将数据传递给模板,模板再渲染页面，将渲染好的页面返回给浏览器</span>
+                <span style="color: rgba(0, 0, 255, 1)">return</span> render(request, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp/grades.html</span><span style="color: rgba(128, 0, 0, 1)">'</span>, {<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">grades</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">: gradesList})
+        配置url:myApp\urls.py
+        urlpatterns </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^$</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.index),
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^(\d+)/(\d+)$</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.detail),
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^grades/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.grades)
+        ]
+    http:</span>//127.0.0.1:8000/<span style="color: rgba(0, 0, 0, 1)">students
+        写students.html模板
+            </span>&lt;!doctype html&gt;
+            &lt;html lang=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">en</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+            &lt;head&gt;
+                &lt;meta charset=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">UTF-8</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                &lt;meta name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">viewport</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+                      content</span>=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                &lt;meta http-equiv=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">X-UA-Compatible</span><span style="color: rgba(128, 0, 0, 1)">"</span> content=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ie=edge</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                &lt;title&gt;学生页面&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;h1&gt;学生信息列表&lt;/h1&gt;
+                &lt;ul&gt;<span style="color: rgba(0, 0, 0, 1)">
+                    {</span>%<span style="color: rgba(0, 0, 255, 1)">for</span> student <span style="color: rgba(0, 0, 255, 1)">in</span> students%<span style="color: rgba(0, 0, 0, 1)">}
+                    </span>&lt;li&gt;<span style="color: rgba(0, 0, 0, 1)">
+                        {{student.sname}}</span>--<span style="color: rgba(0, 0, 0, 1)">{{student.scontend}}
+                    </span>&lt;/li&gt;<span style="color: rgba(0, 0, 0, 1)">
+                    {</span>%endfor%<span style="color: rgba(0, 0, 0, 1)">}
+                </span>&lt;/ul&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;<span style="color: rgba(0, 0, 0, 1)">
+        定义视图：myApp\views.py
+            </span><span style="color: rgba(0, 0, 255, 1)">from</span> .models <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> Students
+            </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> students(request):
+                studentsList </span>=<span style="color: rgba(0, 0, 0, 1)"> Students.objects.all()
+                </span><span style="color: rgba(0, 0, 255, 1)">return</span> render(request, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp/students.html</span><span style="color: rgba(128, 0, 0, 1)">'</span>, {<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">students</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">: studentsList})
+        配置url:myApp\urls.py
+            urlpatterns </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^$</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.index),
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^(\d+)/(\d+)$</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.detail),
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^grades/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.grades),
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^students/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.students),
+        ]
+    需求:点击班级，显示对应班级的学生名字
+        运行不正常https:</span>//www.bilibili.com/video/av17879644/?p=12<span style="color: rgba(0, 0, 0, 1)">
+
+
+
+
+
+
+Django流程梳理
+    创建工程：执行 django</span>-<span style="color: rgba(0, 0, 0, 1)">admin startproject 工程名
+    创建项目：执行 python manage.py startapp 项目名称
+    激活项目：修改 settings.py中的INSTALLED_APPS
+    配置数据库：
+        修改__init__.py文件
+        修改settings.py文件中的DATABASES
+    创建模型类：在项目目录下的models.py文件中创建
+    生成迁移文件：执行python manage.py makemigrations
+    执行迁移：执行python manage.py migrate
+    配置站点：略
+    创建模板目录</span>/<span style="color: rgba(0, 0, 0, 1)">项目模板目录
+    在settings.py中的TEMPLATES添加templates路径
+    在工程目录下（project）修改urls.py
+    在项目目录下创建urls.py
+
+
+使用他人Django代码需要的简易修改：
+</span>1<span style="color: rgba(0, 0, 0, 1)">.在settings.py中修改数据库名
+</span>2<span style="color: rgba(0, 0, 0, 1)">.在settings.py中修改数据库密码
+</span>3<span style="color: rgba(0, 0, 0, 1)">.删除由内向外文件（在对应目录里鼠标右键删除）
+</span>4<span style="color: rgba(0, 0, 0, 1)">.在数据库中创建对应第一步的数据库(自己在SQL中创建)
+</span>5<span style="color: rgba(0, 0, 0, 1)">.执行生成迁移文件
+</span>6<span style="color: rgba(0, 0, 0, 1)">.执行迁移
+</span>7<span style="color: rgba(0, 0, 0, 1)">.启动服务
+</span>8<span style="color: rgba(0, 0, 0, 1)">.浏览器测试
+
+
+Django模型
+    Django对各种数据库提供了很好的支持，Django为这些数据库提供了统一的调用API
+    我们可以根据不同的业务需求选择不同的数据库。
+    配置数据库
+        修改工程目录下的__init__.py文件
+            </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> pymysql
+            pymysql.install_ad_MySQLdb()
+        修改settings.py文件中的DATABASES
+    开发流程
+        配置数据库
+        定义模型类：一个模型都在数据库中对应一张数据库表
+        生成迁移文件
+        执行迁移生成数据表
+        使用模型类进行增删改查
+    ORM
+        概述：对象</span>-关系-<span style="color: rgba(0, 0, 0, 1)">映射
+        任务：
+            根据对象的类型生成表结构
+            将对象，列表的操作转换成SQL语句
+            将SQL语句查询到的结果转换为对象，列表
+        优点：
+            极大的减轻了开发人员的工作量，不需要面对因数据库的变更而修改代码的问题
+    定义模型
+        模型，属性，表，字段之间的关系
+            一个模型类在数据库中对应一张表，在模型类中定义的属性，对应该模型对照表中的一个字段
+        定义属性：见下文
+        创建模型类
+        元选项
+            在模型类中定义Meta类，用于设置元信息
+            示例：
+                </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> Meta:
+                    db_table </span>= <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">students</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+                    ordering </span>= [<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">id</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">]
+            db_table
+                定义数据表名，推荐用小写字母，数据表名默认为项目名小写_类名小写
+            ordering
+                对象的默认排序字段，获取对象的列表时使用
+                示例：
+                    ordering[</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">id</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">] id按升序排列
+                    ordering[</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">-id</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">] id按降序排列
+                注意：排序会增加数据库开销
+    模型成员
+        类属性
+            隐藏类属性objects：
+                是Manager类型的一个对象，作用是与数据库进行交互
+                当定义模型类时没有指定管理器，则Django为模型创建一个名为objects的管理器
+            自定义管理器示例：
+                定义stuObj管理器：
+                    stuObj </span>=<span style="color: rgba(0, 0, 0, 1)"> models.Manager()
+                当为模型指定模型管理器，Django就不再为模型类生成objects模型管理器了。
+            自定义管理器Manager类
+                模型管理器是Django的模型进行与数据库交互的窗口，一个模型可以有多个模型管理器
+                作用：
+                    向管理器类中添加额外的方法
+                    修改管理器返回的原始查询集
+                        通常会重写get_queryset()方法
+                代码示例：
+                    </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> StudentsManager(models.Manager):
+                        </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> get_queryset(self):
+                            </span><span style="color: rgba(0, 0, 255, 1)">return</span> super(StudentsManger, self).get_queryset().filter(isDelete=<span style="color: rgba(0, 0, 0, 1)">False)
+
+                    </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> Students(model.Moder):
+                        </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 自定义模型管理器</span>
+                        <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 当自定义模型管理器，objects就不存在了</span>
+                        stuObj =<span style="color: rgba(0, 0, 0, 1)"> models.Manger()
+                        stuObj2 </span>=<span style="color: rgba(0, 0, 0, 1)"> StudentsManager()
+
+        创建对象
+            目的：向数据库中添加数据
+            当创建对象时，django不会对数据库进行读写操作，当调用save()方法时才与数据库交互，将对象保存在数据库表中。
+            注意：
+                </span><span style="color: rgba(128, 0, 128, 1)">__init__方法已经在父类models</span><span style="color: rgba(0, 0, 0, 1)">.Model中使用，在自定义的模型中无法使用。
+            方法：
+                在模型类中增加一个类方法，示例如下：
+                    </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> Students(model.Moder):
+                        ...snip...
+                         @classmethod
+                        </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> createStudent(cls, name, age, gender, contend,
+                                          grade,lastT, createT, isD</span>=<span style="color: rgba(0, 0, 0, 1)">False):
+                            stu </span>= cls(sname=name, sage=age, sgender=<span style="color: rgba(0, 0, 0, 1)">gender,
+                                        scontend</span>=contend, sgrade=grade, lastTime=lastT, createTime=<span style="color: rgba(0, 0, 0, 1)">createT,
+                                        isDelete</span>=<span style="color: rgba(0, 0, 0, 1)">isD)
+                            </span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> stu
+                在自定义管理器中添加一个方法,示例如下：
+                    </span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> StudentsManager(models.Manager):
+                        </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> get_queryset(self):
+                            </span><span style="color: rgba(0, 0, 255, 1)">return</span> super(StudentsManager, self).get_queryset().filter(isDelete=<span style="color: rgba(0, 0, 0, 1)">False)
+                        </span><span style="color: rgba(0, 0, 255, 1)">def</span> createStudent(self, name, age, gender, contend, grade, lastT, createT, isD=<span style="color: rgba(0, 0, 0, 1)">False):
+                            stu </span>=<span style="color: rgba(0, 0, 0, 1)"> self.model()
+                            </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> print(type(grade))</span>
+                            stu.sname =<span style="color: rgba(0, 0, 0, 1)"> name
+                            stu.sage </span>=<span style="color: rgba(0, 0, 0, 1)"> age
+                            stu.sgender </span>=<span style="color: rgba(0, 0, 0, 1)"> gender
+                            stu.scontend </span>=<span style="color: rgba(0, 0, 0, 1)"> contend
+                            stu.sgrade </span>=<span style="color: rgba(0, 0, 0, 1)"> grade
+                            stu.lastTime </span>=<span style="color: rgba(0, 0, 0, 1)"> lastT
+                            stu.createTime </span>=<span style="color: rgba(0, 0, 0, 1)"> createT
+                            </span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> stu
+        模型查询
+            概述
+                查询集表示从数据库获取的对象的集合
+                查询集可以有多个过滤器
+                过滤器就是一个函数，基于所给的参数限制查询集结果
+                从SQL角度来说，查询集和select语句等价，过滤器就像where条件
+            查询集
+                在管理器上调用过滤器方法返回查询集
+                查询集经过过滤器筛选后返回新的查询集，所以可以写成链式调用
+                惰性执行
+                    创建查询集不会带来任何数据库的访问，直到调用数据库时，才会访问数据
+                直接访问数据的情况：
+                    迭代
+                    序列化
+                    与if合用
+                返回查询集的方法称为过滤器
+                    all()：返回查询集中的所有数据
+                    filter()：保留符合条件的数据
+                        filter(键</span>=<span style="color: rgba(0, 0, 0, 1)">值)
+                        filter(键</span>=值，键=<span style="color: rgba(0, 0, 0, 1)">值)
+                        filter(键</span>=值).filter(键=<span style="color: rgba(0, 0, 0, 1)">值)   且的关系
+                    exclude()：过滤掉符合条件的
+                    order_by()：排序
+                    values():一条数据就是一个字典，返回一个列表
+                    get()
+                        返回一个满足条件的对象
+                        注意：
+                            如果没有找到符合条件的对象，会引发模型类.DoesNotExist异常
+                            如果找到多个对象，会引发模型类MultipleObjectsReturned异常
+                    count()：返回查询集中对象的个数
+                    first()：返回查询集中第一个对象
+                    last():返回查询集中最后一个对象
+                    exits()：判断查询集中是否有数据，如果有数据返回 True,否则返回 False.
+                限制查询集
+                    查询集返回列表，可以使用下标的方法进行限制，等同于sql中的limit语句
+                    注意：下标不能是负数
+                    示例：studentsList </span>= Students.stuObj2.all()[0:5<span style="color: rgba(0, 0, 0, 1)">]
+                查询集的缓存
+                    概述：
+                        每个查询集都包含一个缓存，来最小化对数据库的访问
+                        在新建的查询集中，缓存首次为空，第一次对查询集求值，会发生数据缓存，Django会将查询出来的数据做一个缓存，并返回查询结果。
+                        以后的查询直接使用查询集的缓存
+                字段查询
+                    概述
+                        实现了sql中的where语句，作为方法filter(),exclude(),get()的参数
+                        语法：属性名称__比较运算符</span>=<span style="color: rgba(0, 0, 0, 1)">值
+                        外键：属性名称_id
+                        转义：类似sql中的like语句
+                             like有关情况看我哥他</span>%是为了匹配点位，匹配数据中的%使用（where like <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">\%</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">）
+                             filter(sname__contains</span>=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">%</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+                    比较运算符
+                        exact:判断，大小写敏感
+                            filter(isDelete</span>=<span style="color: rgba(0, 0, 0, 1)">False)
+                        contains：是否包含，大小写敏感
+                            studentsList </span>= Students.stuObj2.filter(sname__contains=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">孙</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+                        startswith,endswith:以value开头或结尾，大小写敏感
+                        以上四个在前面加上i，就表示不区分大小写iexact,icontains,istartswith,iendswith
+                        isnull,isnotnull
+                            是否为空
+                            filter(sname__isnull</span>=<span style="color: rgba(0, 0, 0, 1)">False)
+                        </span><span style="color: rgba(0, 0, 255, 1)">in</span><span style="color: rgba(0, 0, 0, 1)">:是否包含在范围内
+                        gt大于,gte大于等于,lt小于,lte小于等于
+                        year,month,day,week_day,hour,minute,second
+                            studentsList </span>= Students.stuObj2.filter(lastTime__year=2017<span style="color: rgba(0, 0, 0, 1)">)
+                        跨关联查询
+                            处理join查询
+                                语法:
+                                    模型类名__属性名__比较运算符
+                                    </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 描述中带有‘薛延美’这三个字的数据是属于哪个班级的</span>
+                                    grade = Grades.objects.filter(students__scontend__contains=<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">薛延美</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                                    </span><span style="color: rgba(0, 0, 255, 1)">print</span><span style="color: rgba(0, 0, 0, 1)">(grade)
+                            查询快捷pk代表的主键
+                        聚合函数
+                            使用aggregate函数返回聚合函数的值
+                            Avg
+                            Count
+                            Max
+                                maxAge </span>= Student.stuObj2.aggregate(Max(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">sage</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">))
+                                maxAge为最大的sage。
+                            Min
+                            Sum
+                        F对象
+                            可以使用模型的A属性与B属性进行比较
+                            </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.db.models <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> F,Q
+                            </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> grades1(request):
+                                g </span>= Grades.objects.filter(ggirlnum__gt=F(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">gboynum</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">))
+                                </span><span style="color: rgba(0, 0, 255, 1)">print</span><span style="color: rgba(0, 0, 0, 1)">(g)
+                                </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> [&lt;Grades: python02&gt;,&lt;Grades: python03&gt;]</span>
+                                <span style="color: rgba(0, 0, 255, 1)">return</span> HttpResponse(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">OOOOOOOo</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+                            支持F对象的算术运算
+                                g </span>= Grades.objects.filter(ggirlnum__gt=F(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">gboynum</span><span style="color: rgba(128, 0, 0, 1)">'</span>)+20<span style="color: rgba(0, 0, 0, 1)">)
+                        Q对象
+                            概述：过滤器的方法的关键字参数，条件为And模式
+                            需求：进行or查询
+                            解决：使用Q对象
+                                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> students4(request):
+                                    studentsList </span>= Students.stuObj2.filter(Q(pk__lte=3) | Q(sage__gt=50<span style="color: rgba(0, 0, 0, 1)">))
+                                    </span><span style="color: rgba(0, 0, 255, 1)">return</span> render(request, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp/students.html</span><span style="color: rgba(128, 0, 0, 1)">'</span>, {<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">students</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">: studentsList})
+                                只有一个Q对象的时候，就是用于正常匹配条件
+                                studentsList </span>= Students.stuObj2.filter(~Q(pk__lte=3<span style="color: rgba(0, 0, 0, 1)">))
+                                </span>~<span style="color: rgba(0, 0, 0, 1)">Q是取反
+
+
+定义属性
+    概述：
+        django根据属性的类型确定以下信息
+            当前选择的数据库支持字段的类型
+            渲染管理表单时使用的默认html控件
+            在管理站点最低限度的验证
+
+        django会为表增加自动增长的主键列，每个模型只能有一个主键列，如
+        果使用选项设置某属性为主键列后，则django不会再生成默认的主键列
+
+        属性命名限制
+            遵循标识符规则，且变量不能与Python保留字相同
+            由于django的查询方式，不允许使用连续的下划线
+
+    库
+        定义属性时，需要字段类型，字段类型被定义在django.db.models.fields目录下，
+        为了方便使用，被导入到django.db.models中
+
+        使用方式
+            导入: </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.db <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> models
+            通过 models.Field创建字段类型的对象，赋值给属性
+
+    逻辑删除
+        对于重要类型都做逻辑删除，不做物理删除，实现方法是定义idDelete属性，
+        类型为BooleanField,默认值为False
+
+    字段类型
+        autoField
+            一个根据实际ID自动增长的IntegerField,通常不指定，
+            如果不指定，一个主键字段将自动添加到模型中
+
+        CharField(max_length</span>=<span style="color: rgba(0, 0, 0, 1)">字符长度)
+            字符串，默认的表彰样式是TextInput
+
+        TextField
+            大文本字段，一般超过4000时使用，默认的表单控件是Textarea
+
+        IntegerField
+            整数
+
+        DecimalField(max_digits</span>=None, decimal_places=<span style="color: rgba(0, 0, 0, 1)">None)
+            使用Python的Decimal实例表示的十进制浮点数
+            参数说明
+                DecimalField.max_digits
+                    位数总数
+                DecimalField.decimal_places
+                    小数点后的数字位置
+
+        FloatField
+            使用Python的float实例来表示的浮点数
+
+        BooleanField
+            True</span>/<span style="color: rgba(0, 0, 0, 1)">False 字段，此字段的默认表彰控制是CheckboxInput
+
+        NullBooleanField
+            支持 Null, True, False 三种值
+
+        DateField([auto_now</span>=False, auto_now_add=<span style="color: rgba(0, 0, 0, 1)">False])
+            使用Python的datetime.date实例表示的日期
+            参数说明：
+                DateField.auto_now
+                    每次保存对象时，自动设置该字段为当前时间，用于“最后一次修改”
+                    的时间戳，它总是使用当前日期，默认为 False
+                DateField.auto_now_add
+                    当前对象第一次被创建时自动设置当前时间，用于创建的时间戳，
+                    它总是使用当前日期，默认为 False
+            说明
+                该字段默认对应的表单控件是一个TextInput.在管理员站点添加了一个
+                JavaScript写的日历控件，和一个“Today”的快捷按钮，包含了一个额外
+                的invalid_date错误消息键
+            注意
+                auto_now_add, auto_now, </span><span style="color: rgba(0, 0, 255, 1)">and</span><span style="color: rgba(0, 0, 0, 1)"> default 这些设置是相互排斥的，他们之间
+                的任何组合将会发生错误的结果
+
+        TimeField
+            使用Python的datetime.time实例表示的时间，参数同DateField
+
+        DateTimeField
+            使用Python的datetime
+            datetime实例表示的日期和时间，参数同DateField
+
+        FileField
+            一个上传文件的字段
+
+        ImageField
+            继承了FileField的所有属性和方法，但对上传的对象进行校验，
+            确保它是一个有效的image
+
+    字段选项
+        概述
+            通过字段选项，可以实现对字段的约束
+            在字段对象中通过关键字参数指定
+
+        null
+            如果为True,Django将空值以NULL存储在数据库中，默认值为 False
+
+        blanke
+            如果为True,则该字段允许为空白，默认值为 False
+
+        注意
+            null是数据库范畴的概念，blank是表彰验证范畴的概念
+
+        db_column
+            字段的名称，如果未指定，则使用属性的名称
+
+        db_index
+            若值为 True,则在表中会为此字段创建索引
+
+        default
+            默认值
+
+        primary_key
+            若为 True,则该字段会成为模型的主键字段
+
+        unique
+            如果为 True,这个字段在表中必须有唯一值
+
+    关系
+        分类
+            ForeignKey:一对多，将字段定义在多的端中
+            ManyToManyField:多对多，将字段定义在两端中
+            OneToOneField：一对一，将字段定义在任意一端中
+
+        用一访问多
+            格式
+                对象.模型类小写_set
+            示例
+                grade.students_set
+
+        用一访问一
+            格式
+                对象.模型类小写
+            示例
+                grade.studnets
+
+        访问id
+            格式
+                对象.属性_id
+            示例
+                student.sgrade_id
+
+
+视图
+    概述：
+        作用：视图接收web请求，并响应web请求
+        本质：视图就是python中的一个函数
+        响应：
+            响应过程：
+                用户在浏览器中输入网址www.sunck.wang</span>/sunck/<span style="color: rgba(0, 0, 0, 1)">index.html
+                </span>---网址---&gt;<span style="color: rgba(0, 0, 0, 1)">
+                django获取网址信息，去掉IP与端口号，网址变成：sunck</span>/<span style="color: rgba(0, 0, 0, 1)">index.html
+                </span>---虚拟路径与文件名---&gt;<span style="color: rgba(0, 0, 0, 1)">
+                url管理器逐个匹配urlconf,记录视图函数
+                </span>---视图函数名---&gt;<span style="color: rgba(0, 0, 0, 1)">
+                视图管理，找到对应的视图去执行，返回结果给浏览器
+                </span>---响应的数据---&gt;<span style="color: rgba(0, 0, 0, 1)">
+                返回第一步：用户在浏览器中输入网址
+            网页
+                重定向
+                错误视图
+                    404视图：找不到网页（url匹配不成功时返回）时返回
+                        在templates目录下定义404.html
+                            </span>&lt;!doctype html&gt;
+                            &lt;html lang=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">en</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                            &lt;head&gt;
+                                &lt;meta charset=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">UTF-8</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                                &lt;meta name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">viewport</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+                                      content</span>=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                                &lt;meta http-equiv=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">X-UA-Compatible</span><span style="color: rgba(128, 0, 0, 1)">"</span> content=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ie=edge</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                                &lt;title&gt;Document&lt;/title&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                                &lt;h1&gt;页面丢失&lt;/h1&gt;
+                                &lt;h2&gt;{{request_path}}&lt;/h2&gt;
+                            &lt;/body&gt;
+                            &lt;/html&gt;<span style="color: rgba(0, 0, 0, 1)">
+                            request_path:导致错误的网址
+                        配置settings.py
+                            DEBUG
+                                如果为 True,永远不会调用404页面，需要调整为 False 才会显示
+                            ALLOWED_HOSTS </span>= [<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">*</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">]
+                    500视图：在视图代码中出现错误（服务器代码错误）
+                    400视图：错误出现在客户的操作
+            JSON数据
+    url配置
+        配置流程：
+            制定根级url配置文件
+                settings.py文件中的ROOT_URLCONF
+                ROOT_URLCONF </span>= <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">project.urls</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">
+                默认实现了
+            urlpatterns
+                一个url实例的列表
+                url对象
+                    正则表达式
+                    视图名称
+                    名称
+            url匹配正则的注意事项
+                如果想要从url中获取一个值，需要对正则加小括号
+                匹配正则前方不需要加</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">
+                正则前需要加</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">表示字符串不转义
+        引入其他url配置
+            在应用中创建urls.py文件，定义本应用的url配置，在工程urls.py中使用include方法
+                project\urls.py
+                </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.contrib <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> admin
+                </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.conf.urls <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> url,include
+                urlpatterns </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+                    url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^admin/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, admin.site.urls),
+                    url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^</span><span style="color: rgba(128, 0, 0, 1)">'</span>, include(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp.urls</span><span style="color: rgba(128, 0, 0, 1)">'</span>, namespace=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">myAPP</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)),
+                ]
+                myApp\urls.py
+                </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.urls <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> path, include
+                </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.conf.urls <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> url
+                </span><span style="color: rgba(0, 0, 255, 1)">from</span> . <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> views
+                urlpatterns </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+                    url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^$</span><span style="color: rgba(128, 0, 0, 1)">'</span>, views.index, name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">index</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">),
+                ]
+        url的反向解析
+            概述：如果在视图，模板中使用了硬编码链接，在url配置发生改变时，动态生成链接的地址
+            解决：在使用链接时，通过url配置的名称，动态生成url地址
+            作用：使用url模板
+    视图函数
+        定义视图：
+            本质：一个函数
+            视图参数：
+                一个HttpRequest的实例
+                通过正则表达式获取的参数
+            位置：一般在views.py文件下定义
+    HttpRequest对象
+        概述：
+            服务器接收http请求后，会根据报文创建HttpRequest对象
+            视图的第一个参数就是HttpRequest对象
+            django创建的，之后调用视图时传递给视图
+        属性
+            path:请求的完整路径（不包括域名和端口）
+            method:表示请求的方式，常用的有GET,POST
+            encoding:表示浏览器提交的数据的编码方式，一般为utf</span>-8<span style="color: rgba(0, 0, 0, 1)">
+            GET：类似于字典的对象，包含了get请求的所有参数
+            POST:类似于字典的对象，包含了post请求的所有参数
+            FILES:类似字典的对象，包含了所有上传的文件
+            COOKIES:字典，包含所有的cookie
+            session:类似字典的对象，表示当前会话
+        方法
+            is_ajax():如果是通过XMLHttpRequest发起的，返回 True
+        QueryDict对象
+            request对象中的GET,POST都属于QueryDict对象
+            方法：
+                get():
+                    根据键获取值，只能获取一个值
+                    www.sunck.wang</span>/abc?a=1&amp;b=2&amp;c=3<span style="color: rgba(0, 0, 0, 1)">
+                getlist()
+                    将键的值以列表的形式返回
+                    可以获取多个值
+                    www.sunck.wang</span>/abc?a=1&amp;b=2&amp;c=3<span style="color: rgba(0, 0, 0, 1)">
+        GET属性
+            获取浏览器传递过来数据
+            www.sunck.wang</span>/abc?a=1&amp;b=2&amp;c=3<span style="color: rgba(0, 0, 0, 1)">
+            urls.py
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^get1</span><span style="color: rgba(128, 0, 0, 1)">'</span>, views.get1),   <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">结尾不能加$,否则无法匹配</span>
+<span style="color: rgba(0, 0, 0, 1)">            views.py
+            </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> get1(request):
+                a </span>= request.GET.get(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">a</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                b </span>= request.GET.get(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">b</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                c </span>= request.GET.get(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">c</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                </span><span style="color: rgba(0, 0, 255, 1)">return</span> HttpResponse(a + <span style="color: rgba(128, 0, 0, 1)">"</span> <span style="color: rgba(128, 0, 0, 1)">"</span> + b + <span style="color: rgba(128, 0, 0, 1)">"</span> <span style="color: rgba(128, 0, 0, 1)">"</span> +<span style="color: rgba(0, 0, 0, 1)"> c)
+
+            www.sunck.wang</span>/abc?a=1&amp;a=2&amp;c=3<span style="color: rgba(0, 0, 0, 1)">
+            urls.py
+            url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^get2</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.get2),
+            views.py
+            </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> get2(request):
+                a </span>= request.GET.getlist(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">a</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                a1 </span>=<span style="color: rgba(0, 0, 0, 1)"> a[0]
+                a2 </span>= a[1<span style="color: rgba(0, 0, 0, 1)">]
+                c </span>= request.GET.get(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">c</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                </span><span style="color: rgba(0, 0, 255, 1)">return</span> HttpResponse(a1 + <span style="color: rgba(128, 0, 0, 1)">"</span> <span style="color: rgba(128, 0, 0, 1)">"</span> + a2 + <span style="color: rgba(128, 0, 0, 1)">"</span> <span style="color: rgba(128, 0, 0, 1)">"</span> +<span style="color: rgba(0, 0, 0, 1)"> c)
+        POST属性
+            使用表单模拟POST请求
+            关闭CSRF:project\project\settings.py
+                MIDDLEWARE </span>=<span style="color: rgba(0, 0, 0, 1)"> [
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.middleware.security.SecurityMiddleware</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.sessions.middleware.SessionMiddleware</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.middleware.common.CommonMiddleware</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 'django.middleware.csrf.CsrfViewMiddleware',</span>
+                    <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.auth.middleware.AuthenticationMiddleware</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.messages.middleware.MessageMiddleware</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+                    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.middleware.clickjacking.XFrameOptionsMiddleware</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+                ]
+            示例：
+                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> showregist(request):
+                    </span><span style="color: rgba(0, 0, 255, 1)">return</span> render(request, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp/regist.html</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,)
+
+                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> regist(request):
+                    name </span>= request.POST.get(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">name</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+                    gender </span>= request.POST.get(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">gender</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+                    age </span>= request.POST.get(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">age</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+                    hobby </span>= request.POST.getlist(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">hobby</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+                    </span><span style="color: rgba(0, 0, 255, 1)">print</span><span style="color: rgba(0, 0, 0, 1)">(name)
+                    </span><span style="color: rgba(0, 0, 255, 1)">print</span><span style="color: rgba(0, 0, 0, 1)">(gender)
+                    </span><span style="color: rgba(0, 0, 255, 1)">print</span><span style="color: rgba(0, 0, 0, 1)">(age)
+                    </span><span style="color: rgba(0, 0, 255, 1)">print</span><span style="color: rgba(0, 0, 0, 1)">(hobby)
+                    </span><span style="color: rgba(0, 0, 255, 1)">return</span> HttpResponse(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">regist</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+            路径：
+                url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^showregist/$</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.showregist),
+                    url(r</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">^showregist/regist/$</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, views.regist),
+            页面：
+                   </span>&lt;!doctype html&gt;
+                &lt;html lang=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">en</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                &lt;head&gt;
+                    &lt;meta charset=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">UTF-8</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                    &lt;meta name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">viewport</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">
+                          content</span>=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                    &lt;meta http-equiv=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">X-UA-Compatible</span><span style="color: rgba(128, 0, 0, 1)">"</span> content=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ie=edge</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                    &lt;title&gt;注册&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;form action=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">regist/</span><span style="color: rgba(128, 0, 0, 1)">"</span> method=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">post</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;<span style="color: rgba(0, 0, 0, 1)">
+                        姓名：</span>&lt;input type=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">text</span><span style="color: rgba(128, 0, 0, 1)">"</span> name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">name</span><span style="color: rgba(128, 0, 0, 1)">"</span> value=<span style="color: rgba(128, 0, 0, 1)">""</span>/&gt;
+                        &lt;hr&gt;<span style="color: rgba(0, 0, 0, 1)">
+                        性别：</span>&lt;input type=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">radio</span><span style="color: rgba(128, 0, 0, 1)">"</span> name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">gender</span><span style="color: rgba(128, 0, 0, 1)">"</span> value=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">1</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;男&lt;input type=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">radio</span><span style="color: rgba(128, 0, 0, 1)">"</span> name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">gender</span><span style="color: rgba(128, 0, 0, 1)">"</span> value=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">0</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;<span style="color: rgba(0, 0, 0, 1)">女
+                        </span>&lt;hr&gt;<span style="color: rgba(0, 0, 0, 1)">
+                        爱好：</span>&lt;input type=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">checkbox</span><span style="color: rgba(128, 0, 0, 1)">"</span> name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">hobby</span><span style="color: rgba(128, 0, 0, 1)">"</span> value=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">power</span><span style="color: rgba(128, 0, 0, 1)">"</span>/&gt;权利&lt;input type=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">checkbox</span><span style="color: rgba(128, 0, 0, 1)">"</span> name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">hobby</span><span style="color: rgba(128, 0, 0, 1)">"</span> value=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">money</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;金钱&lt;input type=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">checkbox</span><span style="color: rgba(128, 0, 0, 1)">"</span> name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">hobby</span><span style="color: rgba(128, 0, 0, 1)">"</span> value=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">beauty</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;美女&lt;input type=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">checkbox</span><span style="color: rgba(128, 0, 0, 1)">"</span> name=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">hobby</span><span style="color: rgba(128, 0, 0, 1)">"</span> value=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Tesla</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;<span style="color: rgba(0, 0, 0, 1)">Tesla
+                        </span>&lt;hr&gt;
+                        &lt;input type=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">submit</span><span style="color: rgba(128, 0, 0, 1)">"</span> value=<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">注册</span><span style="color: rgba(128, 0, 0, 1)">"</span>&gt;
+                    &lt;/form&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;<span style="color: rgba(0, 0, 0, 1)">
+    HttpResponse对象
+        概述：
+            作用：给浏览器返回数据
+            HttpRequest对象是由Django创建的，HttpResponse对象是由程序员创建
+        用法：
+            不用模板，直接返回数据
+                语句示例：</span><span style="color: rgba(0, 0, 255, 1)">return</span> HttpResponse(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Sunck is a good man</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+            调用模板
+                使用render方法
+                    原型：render(request, templateName[, context])
+                    作用:结合数据和模板，返回一个完整的HTML页面
+                    参数：
+                        request：请求体对象
+                        templateName：模板路径
+                        context：传递给需要渲染在模板上的数据
+        属性
+            content:表示返回内容
+            charset:编码格式
+            status_code:响应状态码
+                </span>200
+                304
+                404
+                400<span style="color: rgba(0, 0, 0, 1)">
+            content</span>-<span style="color: rgba(0, 0, 0, 1)">type:指定输出的MIME类型
+        方法
+            init:使用页面内容实例化HttpResponse对象
+            write(content):以文件的形式写入
+            flush():以文件的形式输出缓冲区
+            set_cookie(key, value, maxAge</span>=None, exprise=<span style="color: rgba(0, 0, 0, 1)">None)
+            delete_cookie(key):
+                删除cookie
+                如果删除一个不存在的cookie，就当什么都没发生
+        子类HttpResponseRedirect
+            功能：重定向，服务器端的跳转
+            简写
+                redirect(to)
+            to推荐使用反向解析
+            示例：
+                </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.http <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> HttpResponseRedirect
+                </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.shortcuts <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> redirect
+                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> redirect1(request):
+                    </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> return HttpResponseRedirect('/redirect2')</span>
+                    <span style="color: rgba(0, 0, 255, 1)">return</span> redirect(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">/redirect2</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> redirect2(request):
+                    </span><span style="color: rgba(0, 0, 255, 1)">return</span> HttpResponse(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">我是重定向后的视图</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+        子类JsonResponse
+            返回Json数据，一般用于异步请求
+            </span><span style="color: rgba(128, 0, 128, 1)">__init__</span><span style="color: rgba(0, 0, 0, 1)">(self.data)
+            data 字典
+            注意：Content</span>-type类型为application/<span style="color: rgba(0, 0, 0, 1)">json
+    状态保持
+        http协议是无状态的，每次请求都是一次新的请求，它不记得之前的请求。
+        客户端与服务器的一次通信就是一次会话
+        实现状态的保持，在客户端或服务端存储有关会话的数据
+        存储的方式
+            cookie:所有数据存储在客户端，不要存储敏感的数据
+            session:所有的数据存储在服务端，在客户端用cookie存储session_id
+        状态保持的目的:
+            在一段时间内跟踪请求者的状态，可以实现跨页面访问当前的请求者的数据
+        注意：不同的请求者之间不会共享这个数据，与请求者一一对应
+        启用session:project\project\settings.py
+            INSTALLED_APPS    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.sessions</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+            MIDDLEWARE    </span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">django.contrib.sessions.middleware.SessionMiddleware</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">,
+        使用session
+            启用session后，每个httpRequest对象都有一个session属性
+            get[key, default</span>=<span style="color: rgba(0, 0, 0, 1)">None]    根据键获取session值
+            clear()    清空所有会话
+            flush()    删除当前会话并删除会话的cookie
+            示例：
+                </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> session</span>
+                <span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> main(request):
+                    </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 取session</span>
+                    username = request.session.get(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">name</span><span style="color: rgba(128, 0, 0, 1)">'</span>, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">游客</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                    </span><span style="color: rgba(0, 0, 255, 1)">print</span><span style="color: rgba(0, 0, 0, 1)">(username)
+                    </span><span style="color: rgba(0, 0, 255, 1)">return</span> render(request, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp/main.html</span><span style="color: rgba(128, 0, 0, 1)">'</span>, {<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">username</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">: username})
+
+                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> login(request):
+                    </span><span style="color: rgba(0, 0, 255, 1)">return</span> render(request, <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">myApp/login.html</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+
+                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> showmain(request):
+                    </span><span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">*****************</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+                    username </span>= request.POST.get(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">username</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+                    </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 存储session</span>
+                    request.session[<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">name</span><span style="color: rgba(128, 0, 0, 1)">'</span>] =<span style="color: rgba(0, 0, 0, 1)"> username
+                    </span><span style="color: rgba(0, 0, 255, 1)">return</span> redirect(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">/main/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+
+                </span><span style="color: rgba(0, 0, 255, 1)">from</span> django.contrib.auth <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> logout
+                </span><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> quit(request):
+                    </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 清除session</span>
+                    logout(request) <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 方法1，推荐</span>
+                    <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> request.session.clear() # 方法2</span>
+                    request.session.flush() <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 方法3</span>
+                    <span style="color: rgba(0, 0, 255, 1)">return</span> redirect(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">/main/</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+        设置session过期时间
+            set_expiry(value)
+            request.session.set_expiry(</span>10<span style="color: rgba(0, 0, 0, 1)">)  设置为10秒后过期
+            如果不设置，2个星期后过期
+            value设置为0代表关闭浏览器时过期
+            value设置为None代表设置永不过期，不推荐
+
+Redis使用：略</span></pre>
+</div>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+        </div>
+        <p class="postfoot">
+            posted on 
+<span id="post-date">2018-03-12 03:40</span>&nbsp;
+<a href="https://www.cnblogs.com/fengbo1113/">大蛇Python</a>&nbsp;
+阅读(<span id="post_view_count">26095</span>)&nbsp;
+评论(<span id="post_comment_count">1</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=8547302" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(8547302);return false;">收藏</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 390418, cb_blogApp = 'fengbo1113', cb_blogUserGuid = '47702849-5d38-4696-3667-08d4ef52ecb6';
+    var cb_entryId = 8547302, cb_entryCreatedDate = '2018-03-12 03:40', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_news"></div>
+    <div id="cnblogs_c2" class="c_ad_block">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_kb"></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+   </script>
+</div>
+
+
+
+</div>
+</div>
+<div id="leftmenu">
+
+
+<h3>导航</h3>
+<ul>
+    <li>
+        <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/fengbo1113/">
+首页</a>
+
+    </li>
+    <li>
+        
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E5%A4%A7%E8%9B%87Python">
+联系</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/fengbo1113/rss/">
+订阅</a>
+        
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/fengbo1113/rss/">
+    <img src="/skins/anothereon001/images/xml.gif" alt="订阅" />
+</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+    </li>
+</ul>
+
+
+<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>
+<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+
+</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	<a href="https://www.cnblogs.com/" id="footer_site_link">博客园</a>
+	<br />
+	Copyright &copy; 2021 大蛇Python
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+</p>
+
+
+</div>
+</div>
+
+
+    
+</body>
+</html>
