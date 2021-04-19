@@ -1,0 +1,82 @@
+创建版本库： 1.在合适的地方，创建一个空目录
+	     2.cd进入该目录
+	     3.使用 git init 命令把这个目录变成Git可以管理
+	注意：千万不要手动修改 .git目录里的文件
+
+把文件添加到版本库 ：  1.在仓库目录下创建一个wangshifu.txt   添加 wangshifu is a good man
+
+		       2.把文件添加到仓库 git add wangshifu.txt
+		       3.把文件提交到仓库 git commit -m "注释信息"
+
+关联远程仓库  git remote add origin 远程仓库地址
+删除关联 git remote rm origin
+
+拉取远程库内容到本地库   git pull origin master
+推送本地库到远程库  git push origin master
+		   注意：需要先将远程库内容拉到本地，否则会报错
+			忽略特殊文件    .gitignore
+
+
+git log  日志
+
+版本回退：
+回退到上一个版本   git reset  --hard HEAD^
+回退到上上个版本   git reset  --hard HEAD^^
+回退到上100个版本  git reset  --hard HEAD-100
+回退到具体版本     git reset  --hard 具体版本号 
+
+从零开发  先有远程库 
+	  从远程库克隆  git clone 远程库地址      (git clone git@github.com:icanforget/wangsf.git)
+
+
+创建分支   git branch  分支名
+
+切换分支   git checkout 分支名
+
+创建与切换同时进行  git checkout -b 分支名
+
+删除分支 git branch -d 分支名
+
+删除远程分支 git push origin --delete 分支名
+
+(当远程分支还没创建时)把本地分支推到远程同时创建一个远程分支：
+	git push --set-upstream origin 本地分支名
+
+
+多人协作:
+		推送分支   git push origin master
+			   git push origin dev
+		
+		抓取分支   从远程库clone时，默认只能看到master
+			   想在dev分支上开发，就必须创建origin的dev分支到本地
+			   git checkout -b dev
+
+		
+		工作模式:   1.可以试图使用git push origin 分支名  推送自己的修改
+			    2.如果推送失败，则因为远程分支比你的本地更新，需先使用git pull试图合并
+			    3.如果合并有冲突，则解决冲突，并在本地提交
+			    4.如果有冲突或者解决冲突后，再用git push origin 分支名 推送就能成功
+			    5.如果git pull 提示“no tracking information”则说明本地分支和远程分支的链接没有创建，用git push --set-upstream origin 本地分支名 在远程上先创建分支
+
+
+标签管理:
+	git tag 标签名   打标签
+	git tag   查看所有标签
+	git tag 标签名 commitID  指定commitID打标签
+	git tag -a 标签名 -m "标签信息"    指定标签信息
+	git checkout 标签名   切换到指定标签
+	git show 标签名   查看说明文字
+	git tag -d 标签名 删除标签
+	git push origin 标签名 推送标签到远程
+	git push origin  --tags  一次性推送全部尚未推送到远程的本地标签
+
+	删除已经推送到远程的标签      先从本地删除   git tag -d 标签名
+				      再从远程删除   git push origin :refs/tags/标签名
+
+
+
+
+
+
+
+
